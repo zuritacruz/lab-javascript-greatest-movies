@@ -32,21 +32,48 @@ howManyMovies(movies);
 
 // Iteration 3: All scores average - Get the average of all scores with 2 decimals
 function scoresAverage(moviesArray) {
-    const scoreAvg = moviesArray.reduce((a, b) => a + b.score, 0);
-    console.log((scoreAvg / moviesArray.length).toFixed(2));
-    return (scoreAvg / moviesArray.length).toFixed(2);
+    const moviesScore = moviesArray.reduce((a, b) => a + b.score, 0);
+    const scoreAvg = (moviesScore / moviesArray.length).toFixed(2);
+    console.log(scoreAvg);
+    return scoreAvg;
 }
 
 scoresAverage(movies);
 
 // Iteration 4: Drama movies - Get the average of Drama Movies
-function dramaMoviesScore(moviesArray) {}
+function dramaMoviesScore(moviesArray) {
+    const dramaMovies = [];
+    moviesArray.forEach(element => {
+        if (element.genre.includes('Drama')) {
+            dramaMovies.push(element.score)
+        }
+    })
+    const moviesScore = dramaMovies.reduce((a, b) => a + b, 0);
+    const scoreAvg = (moviesScore / dramaMovies.length).toFixed(2);
+    console.log(scoreAvg);
+    return scoreAvg;
+}
+
+dramaMoviesScore(movies)
 
 // Iteration 5: Ordering by year - Order by year, ascending (in growing order)
-function orderByYear(moviesArray) {}
+function orderByYear(moviesArray) {
+    const sortedMoviesByYear = moviesArray.sort((a, b) => (a.year < b.year) ? -1 : (a.year > b.year) ? 1 : 0);
+    console.log(sortedMoviesByYear);
+    return sortedMoviesByYear;
+}
+
+orderByYear(movies);
 
 // Iteration 6: Alphabetic Order - Order by title and print the first 20 titles
-function orderAlphabetically(moviesArray) {}
+function orderAlphabetically(moviesArray) {
+    const sortedMoviesByTitle = moviesArray.sort((a, b) => (a.title < b.title) ? -1 : (a.title > b.title) ? 1 : 0);
+    const firstTwentyMovies = sortedMoviesByTitle.slice(0, 20);
+    console.log(firstTwentyMovies);
+    return firstTwentyMovies;
+}
+
+orderAlphabetically(movies);
 
 // BONUS - Iteration 7: Time Format - Turn duration of the movies from hours to minutes
 function turnHoursToMinutes(moviesArray) {}
